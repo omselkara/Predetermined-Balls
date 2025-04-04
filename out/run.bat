@@ -1,0 +1,1 @@
+java --module-path "C:\Program Files\Java\javafx-sdk-17.0.14\lib" --add-modules javafx.controls Main
