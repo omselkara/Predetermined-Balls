@@ -54,7 +54,7 @@ Predetermined Balls is a physics simulation application that simulates realistic
    - Note the path to the `lib` folder (e.g., `C:\javafx-sdk-21\lib` on Windows or `/usr/local/javafx-sdk-21/lib` on Linux/Mac)
 
 3. **Add an image file**:
-   - Place an image file named `img.png` in the same directory where you will run the application (typically the compiled output directory)
+   - Place an image file named `img.png` in the directory where you will execute the java command
    - This image will be used to color the balls based on their final positions
 
 ## 💻 Usage
@@ -207,8 +207,7 @@ The simulation uses a grid-based spatial partitioning system (chunks) to optimiz
 - The first run should have `save = true` to generate the predetermined positions in `out.txt`
 - Subsequent runs can use `load = true` to use the saved positions from `out.txt`
 - The simulation is deterministic when using the same seed and loaded positions
-- Ensure `img.png` exists in the current working directory (where you run the java command) before running
-- Both `img.png` and `out.txt` should be in the same directory as the compiled `.class` files when running the application
+- Ensure `img.png` exists in the current working directory (where you execute the java command) before running
 
 ## 🤝 Contributing
 
