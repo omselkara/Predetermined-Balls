@@ -38,7 +38,10 @@ Predetermined Balls is a physics simulation application that simulates realistic
 
 - **Java Development Kit (JDK)**: Version 11 or higher
 - **JavaFX SDK**: Download from [OpenJFX](https://openjfx.io/)
-- An image file named `img.png` (can be any image; will be used for ball coloring - must be in the working directory where you execute the java command)
+- **Image file**: An image file named `img.png`
+  - Can be any image in PNG format
+  - Will be used for ball coloring based on pixel colors
+  - Must be in the working directory where you execute the java command
 
 ## 🚀 Installation
 
