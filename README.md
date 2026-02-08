@@ -38,7 +38,7 @@ Predetermined Balls is a physics simulation application that simulates realistic
 
 - **Java Development Kit (JDK)**: Version 11 or higher
 - **JavaFX SDK**: Download from [OpenJFX](https://openjfx.io/)
-- An image file named `img.png` (must be in the working directory where you execute the java command)
+- An image file named `img.png` (can be any image; will be used for ball coloring - must be in the working directory where you execute the java command)
 
 ## 🚀 Installation
 
@@ -55,7 +55,8 @@ Predetermined Balls is a physics simulation application that simulates realistic
 
 3. **Add an image file**:
    - Place an image file named `img.png` in the directory where you will execute the java command
-   - This image will be used to color the balls based on their final positions
+   - Can be any image in PNG format; the simulation will use its colors to color the balls
+   - For best results, use an image with dimensions matching the window size (default 600x600) or the same aspect ratio
 
 ## 💻 Usage
 
@@ -75,7 +76,12 @@ cd src
 javac *.java --module-path "/path/to/javafx-sdk/lib" --add-modules javafx.controls
 ```
 
-**Note**: The compiled `.class` files will be generated in the `src` directory. For better organization, you can compile to a separate output directory using the `-d` flag.
+**Note**: The compiled `.class` files will be generated in the `src` directory. For better organization, you can compile to a separate output directory:
+
+```bash
+# Example: Compile to 'out' directory
+javac *.java -d ../out --module-path "/path/to/javafx-sdk/lib" --add-modules javafx.controls
+```
 
 ### Running the Application
 
@@ -104,6 +110,8 @@ The simulation behavior can be customized by modifying constants in the source f
 - `load` (line 54): Set to `true` to load predetermined positions from `out.txt` (in current working directory)
 - `save` (line 55): Set to `true` to save ball positions to `out.txt` (in current working directory)
 - `render` (line 57): Set to `true` to enable rendering, `false` for faster computation
+
+**Note**: For typical usage, set `save = true` and `load = false` on the first run to generate positions, then `save = false` and `load = true` on subsequent runs to use saved positions.
 
 ### Ball.java
 - `dx` (line 12): Ball diameter (default: 6.0)
@@ -204,10 +212,11 @@ The simulation uses a grid-based spatial partitioning system (chunks) to optimiz
 
 ## 📝 Notes
 
-- The first run should have `save = true` to generate the predetermined positions in `out.txt`
-- Subsequent runs can use `load = true` to use the saved positions from `out.txt`
+- **First run**: Set `save = true` and `load = false` in Main.java to generate predetermined positions and save them to `out.txt`
+- **Subsequent runs**: Set `save = false` and `load = true` in Main.java to use the saved positions from `out.txt`
 - The simulation is deterministic when using the same seed and loaded positions
 - Ensure `img.png` exists in the current working directory (where you execute the java command) before running
+- For best visual results, use an image with dimensions matching the window size (default 600x600)
 
 ## 🤝 Contributing
 
