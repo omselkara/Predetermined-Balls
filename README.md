@@ -38,7 +38,7 @@ Predetermined Balls is a physics simulation application that simulates realistic
 
 - **Java Development Kit (JDK)**: Version 11 or higher
 - **JavaFX SDK**: Download from [OpenJFX](https://openjfx.io/)
-- An image file named `img.png` in the project root directory (for ball coloring)
+- An image file named `img.png` (must be in the working directory where you execute the java command)
 
 ## 🚀 Installation
 
@@ -122,11 +122,11 @@ Predetermined-Balls/
 │   ├── FileInput.java     # File reading utility
 │   ├── FileOutput.java    # File writing utility
 │   └── FastRGB.java       # Fast pixel color extraction from images
-├── out/                   # Output directory (example, may vary)
-│   ├── *.class            # Compiled Java classes
-│   ├── img.png            # Input image (must be in working directory)
-│   └── out.txt            # Saved ball positions (generated when save=true)
 └── README.md              # This file
+
+Note: When running the application, ensure these files are in your working directory:
+├── img.png                # Input image for ball coloring (user-provided)
+└── out.txt                # Saved ball positions (generated when save=true, loaded when load=true)
 ```
 
 ## 🔧 Technical Details
