@@ -189,7 +189,7 @@ The simulation uses a grid-based spatial partitioning system (chunks) to optimiz
 
 ### Creating Different Patterns
 
-1. **Modify spawn parameters** in `Main.java` (lines 278-299):
+1. **Modify spawn parameters** in `Main.java` (lines 277-299):
    - Change spawn position (x, y coordinates)
    - Adjust initial velocity
    - Modify spawn rate and amount
