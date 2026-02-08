@@ -54,7 +54,7 @@ Predetermined Balls is a physics simulation application that simulates realistic
    - Note the path to the `lib` folder (e.g., `C:\javafx-sdk-21\lib` on Windows or `/usr/local/javafx-sdk-21/lib` on Linux/Mac)
 
 3. **Add an image file**:
-   - Place an image file named `img.png` in the project root directory
+   - Place an image file named `img.png` in the same directory where you will run the application (typically the compiled output directory)
    - This image will be used to color the balls based on their final positions
 
 ## 💻 Usage
@@ -75,9 +75,11 @@ cd src
 javac *.java --module-path "/path/to/javafx-sdk/lib" --add-modules javafx.controls
 ```
 
+**Note**: The compiled `.class` files will be generated in the `src` directory. For better organization, you can compile to a separate output directory using the `-d` flag.
+
 ### Running the Application
 
-After compilation, run the application:
+After compilation, run the application from the directory containing the compiled classes. Make sure `img.png` is in the same directory:
 
 **Windows**:
 ```bash
@@ -89,6 +91,8 @@ java --module-path "C:\path\to\javafx-sdk\lib" --add-modules javafx.controls Mai
 java --module-path "/path/to/javafx-sdk/lib" --add-modules javafx.controls Main
 ```
 
+**Important**: The application looks for `img.png` and `out.txt` in the current working directory. Ensure these files are present where you run the java command.
+
 ## ⚙️ Configuration
 
 The simulation behavior can be customized by modifying constants in the source files:
@@ -97,8 +101,8 @@ The simulation behavior can be customized by modifying constants in the source f
 - `width` and `height` (line 32-33): Window dimensions (default: 600x600)
 - `col` and `row` (line 38): Number of chunks for spatial partitioning (default: 150x150)
 - `count` (line 45): Number of balls to simulate (default: 12,000)
-- `load` (line 54): Set to `true` to load predetermined positions from `out.txt`
-- `save` (line 55): Set to `true` to save ball positions to `out.txt`
+- `load` (line 54): Set to `true` to load predetermined positions from `out.txt` (in current working directory)
+- `save` (line 55): Set to `true` to save ball positions to `out.txt` (in current working directory)
 - `render` (line 57): Set to `true` to enable rendering, `false` for faster computation
 
 ### Ball.java
@@ -118,9 +122,10 @@ Predetermined-Balls/
 │   ├── FileInput.java     # File reading utility
 │   ├── FileOutput.java    # File writing utility
 │   └── FastRGB.java       # Fast pixel color extraction from images
-├── out/
-│   └── out.txt            # Saved ball positions (generated)
-├── img.png                # Input image for ball coloring (user-provided)
+├── out/                   # Output directory (example, may vary)
+│   ├── *.class            # Compiled Java classes
+│   ├── img.png            # Input image (must be in working directory)
+│   └── out.txt            # Saved ball positions (generated when save=true)
 └── README.md              # This file
 ```
 
@@ -148,8 +153,8 @@ The simulation uses a grid-based spatial partitioning system (chunks) to optimiz
 
 1. **Initialization**:
    - Creates a grid of chunks for spatial partitioning
-   - Loads an image (`img.png`) for ball coloring
-   - Optionally loads predetermined positions from `out.txt`
+   - Loads an image (`img.png` from current working directory) for ball coloring
+   - Optionally loads predetermined positions from `out.txt` (if load=true)
 
 2. **Ball Spawning**:
    - Balls are spawned gradually from the left side of the screen
@@ -199,10 +204,11 @@ The simulation uses a grid-based spatial partitioning system (chunks) to optimiz
 
 ## 📝 Notes
 
-- The first run should have `save = true` to generate the predetermined positions
-- Subsequent runs can use `load = true` to use the saved positions
+- The first run should have `save = true` to generate the predetermined positions in `out.txt`
+- Subsequent runs can use `load = true` to use the saved positions from `out.txt`
 - The simulation is deterministic when using the same seed and loaded positions
-- Ensure `img.png` exists in the root directory before running
+- Ensure `img.png` exists in the current working directory (where you run the java command) before running
+- Both `img.png` and `out.txt` should be in the same directory as the compiled `.class` files when running the application
 
 ## 🤝 Contributing
 
